@@ -1,0 +1,14 @@
+services:
+  hoodbot2:
+    develop:
+      watch:
+        - path: ./
+          action: rebuild
+    build:
+      dockerfile: Dockerfile
+      args:
+        - progress=plain
+    environment:
+      - DISCORD_TOKEN=${DISCORD_TOKEN:?A discord token is required}
+    entrypoint: ./target/release/hoodbot2
+    tty: true
